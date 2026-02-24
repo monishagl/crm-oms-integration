@@ -6,9 +6,9 @@ spring:
   application:
     name: integration-service
   datasource:
-    url: ${SPRING_DATASOURCE_URL}
-    username: ${SPRING_DATASOURCE_USERNAME}
-    password: ${SPRING_DATASOURCE_PASSWORD}
+    url: "jdbc:postgresql://ep-morning-silence-ah22k4eu-pooler.c-3.us-east-1.aws.neon.tech:5432/neondb?sslmode=require"
+    username: "neondb_owner"
+    password: "npg_1uQifXYg6MWF"
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:

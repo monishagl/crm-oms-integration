@@ -76,5 +76,31 @@ public class InboxEvent {
 
     public UUID getId() { return id; }
     public String getEventId() { return eventId; }
+   // public int getAttemptCount1() { return attemptCount; }
+    public void markProcessing() {
+        this.status = InboxStatus.PROCESSING;
+    }
+
+    public void markProcessed() {
+        this.status = InboxStatus.PROCESSED;
+    }
+
+    public void markFailed(String err, int attempt, OffsetDateTime nextAttemptAt) {
+        this.status = InboxStatus.FAILED;
+        this.attemptCount = attempt;
+        this.nextAttemptAt = nextAttemptAt;
+    }
+
+    public void markPendingRetry(int attempt, OffsetDateTime nextAttemptAt) {
+        this.status = InboxStatus.PENDING;
+        this.attemptCount = attempt;
+        this.nextAttemptAt = nextAttemptAt;
+    }
+
+    public String getEventType() { return eventType; }
+public String getPayload() { return payload; }
+public int getAttemptCount() { return attemptCount; }
+
+
 }
 
