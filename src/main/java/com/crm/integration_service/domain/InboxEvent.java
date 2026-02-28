@@ -98,9 +98,16 @@ public class InboxEvent {
     }
 
     public String getEventType() { return eventType; }
-public String getPayload() { return payload; }
-public int getAttemptCount() { return attemptCount; }
-
+    public String getPayload() { return payload; }
+    public int getAttemptCount() { return attemptCount; }
+     public String getCorrelationId(){
+        return correlationId;
+    }
+    public void resetForReplay() {
+        this.status = InboxStatus.PENDING;
+        this.attemptCount = 0;
+        this.nextAttemptAt = OffsetDateTime.now();
+    }
 
 }
 

@@ -30,5 +30,6 @@ public interface InboxEventRepository extends JpaRepository<InboxEvent, UUID> {
     @Modifying
     @Query("update InboxEvent e set e.status = :status where e.id in :ids")
     int bulkUpdateStatus(@Param("ids") List<UUID> ids, @Param("status") InboxStatus status);
-}
+      
+  }
 
